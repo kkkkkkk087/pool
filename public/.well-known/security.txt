@@ -1,0 +1,6 @@
+Contact: mailto:arkatayen@gmail.com
+Expires: 2027-05-04T00:00:00.000Z
+Preferred-Languages: en, ar
+Canonical: https://www.egls.ae/.well-known/security.txt
+Policy: https://www.egls.ae/security-policy
+Hiring: https://www.egls.ae/careers

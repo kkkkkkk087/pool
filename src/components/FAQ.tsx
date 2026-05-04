@@ -38,11 +38,13 @@ export default function FAQ() {
           >
              <div 
                className="absolute inset-0 bg-cover bg-center"
+               role="img"
+               aria-label="Clean swimming pool with clear turquoise water"
                style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80")' }}
              />
              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
              <div className="absolute bottom-8 left-8 right-8">
-               <h3 className="text-white font-serif text-3xl font-bold mb-2 text-balance">The EdenStar Standard</h3>
+               <h3 className="text-white font-serif text-3xl font-bold mb-2 text-balance">The Eden Gardens Standard</h3>
                <p className="text-white/80 font-sans text-sm tracking-wide">Transparency, precision, and unwavering reliability in every visit.</p>
              </div>
           </motion.div>
@@ -75,7 +77,7 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className={`w-full text-left py-5 px-6 flex justify-between items-center group cursor-pointer focus:outline-none ${isOpen ? 'bg-[#3baafe] text-white' : 'bg-transparent text-gray-900'}`}
+                    className={`w-full text-left py-5 px-6 flex justify-between items-center group cursor-pointer focus-visible:ring-2 focus-visible:ring-brand-turquoise focus:outline-none ${isOpen ? 'bg-[#3baafe] text-white' : 'bg-transparent text-gray-900'}`}
                   >
                     <span className="font-sans font-semibold text-[15px]">
                       {faq.question}

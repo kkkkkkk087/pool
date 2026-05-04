@@ -1,25 +1,28 @@
 import { motion } from 'motion/react';
 import { Settings, Droplets, PenTool, ShieldCheck } from 'lucide-react';
 
-const services = [
+const softServices = [
   {
-    title: 'Comprehensive Cleaning',
-    description: 'Deep tile scrubbing, vacuuming, and surface skimming for pristine water quality.',
+    title: 'Precision Cleaning',
+    description: 'Weekly surface skimming, wall brushing, and advanced vacuuming for crystal clear water.',
     icon: <Droplets className="w-8 h-8 text-[#06b6d4]" />
   },
   {
-    title: 'Chemical Balancing',
-    description: 'Precise monitoring and adjustment of pH, chlorine, and alkalinity levels.',
+    title: 'Chemical Stewardship',
+    description: 'Bespoke chemical balancing to ensure perfect pH levels that are gentle on the skin and eyes.',
     icon: <ShieldCheck className="w-8 h-8 text-[#10b981]" />
-  },
+  }
+];
+
+const hardServices = [
   {
-    title: 'Equipment Maintenance',
-    description: 'Inspection and servicing of pumps, filters, and heating systems to prevent breakdowns.',
+    title: 'MEP Engineering',
+    description: 'Mechanical, electrical, and plumbing inspections to keep pumps and heaters at peak efficiency.',
     icon: <Settings className="w-8 h-8 text-gray-700" />
   },
   {
-    title: 'Repairs & Upgrades',
-    description: 'Expert repairs resolving leaks and integrating modern energy-efficient pool technology.',
+    title: 'Technical Repairs',
+    description: 'Structural leak detection, tile repairs, and integration of modern pool automation systems.',
     icon: <PenTool className="w-8 h-8 text-[#d4af37]" />
   }
 ];
@@ -52,26 +55,45 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 * index }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group hover:-translate-y-1 relative overflow-hidden"
-            >
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#06b6d4] to-[#10b981] opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="bg-gray-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h3 className="font-serif text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
-            </motion.div>
-          ))}
+        {/* Soft FM Section */}
+        <div className="mb-12">
+          <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-[#06b6d4] mb-8 border-l-2 border-[#06b6d4] pl-4">Soft Services (Cleaning)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {softServices.map((service, index) => (
+              <ServiceCard key={service.title} service={service} index={index} />
+            ))}
+          </div>
+        </div>
+
+        {/* Hard FM Section */}
+        <div>
+          <h3 className="text-sm font-bold tracking-[0.2em] uppercase text-gray-400 mb-8 border-l-2 border-gray-400 pl-4">Hard Services (Engineering)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {hardServices.map((service, index) => (
+              <ServiceCard key={service.title} service={service} index={index + 2} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ServiceCard({ service, index }: { service: any; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1 * index }}
+      className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group hover:-translate-y-1 relative overflow-hidden"
+    >
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#06b6d4] to-[#10b981] opacity-0 group-hover:opacity-100 transition-opacity" />
+      <div className="bg-gray-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+        {service.icon}
+      </div>
+      <h3 className="font-serif text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+      <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
+    </motion.div>
   );
 }

@@ -1,67 +1,106 @@
 import { motion } from 'motion/react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, Star, CheckCircle2, Phone } from 'lucide-react';
+import { AutoRevealingHeading } from './AutoRevealingHeading';
 
 export default function Hero() {
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen min-h-[700px] flex items-center overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=2850&q=80")' }}
       >
-        <div className="absolute inset-0 bg-gray-900/40 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
-
-      {/* Animated Sub-gradient */}
-      <div className="absolute inset-0 z-0 bg-gradient-animate opacity-40 mix-blend-overlay bg-gradient-to-tr from-[#06b6d4]/40 via-transparent to-[#10b981]/40" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center mt-12 md:mt-0">
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-white/90 uppercase tracking-[0.2em] text-sm md:text-base font-medium mb-6"
-        >
-          Premier Pool Maintenance Abu Dhabi
-        </motion.p>
-        
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium text-white leading-[0.9] tracking-tight mb-10 text-balance"
-        >
-          PRISTINE POOLS.<br/>PREMIER CARE.
-        </motion.h1>
-
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-6 items-center justify-center shadow-2xl"
-        >
-          <a 
-            href="#contact" 
-            className="btn-glow-hover flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm transition-transform hover:scale-105"
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col items-start text-left max-w-2xl">
+          {/* Social Proof Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-8 border border-white/20"
           >
-            Book Now
-            <span className="bg-[#d4af37] text-white rounded-full p-1.5 flex items-center justify-center">
-               <ChevronRight size={16} strokeWidth={3} />
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={14} className="fill-amber-400 text-amber-400" />
+              ))}
+            </div>
+            <span className="text-white text-xs font-bold uppercase tracking-wider">
+              4.9/5 Rating • Trusted by Elite Residences
             </span>
-          </a>
+          </motion.div>
           
-          <a 
-            href="#services" 
-            className="text-white/80 hover:text-white uppercase tracking-widest text-sm font-medium transition-colors border-b border-white/30 hover:border-white pb-1"
+          <div className="font-sans text-5xl md:text-7xl font-black text-white leading-[1.1] mb-6 text-balance">
+            <AutoRevealingHeading text="Abu Dhabi's Pool Care," delay={0.05} />
+            <br/>
+            <AutoRevealingHeading text="Done Right." delay={0.05} className="text-brand-turquoise" />
+          </div>
+
+          <motion.p 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-white/80 text-lg md:text-xl font-medium mb-8 leading-relaxed"
           >
-            Explore Services
-          </a>
-        </motion.div>
+            We handle the chemistry and the sweat so you can just enjoy the splash. 
+            Weekly maintenance, repairs, and green pool recovery.
+          </motion.p>
+
+          {/* Bullet Points */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-col gap-3 mb-10"
+          >
+            {[
+              'Premium Swimming Pool Maintenance',
+              'Advanced Water Filtration Solutions',
+              'Sustainable & Eco-friendly Pool Care'
+            ].map((text, i) => (
+              <div key={i} className="flex items-center gap-3 text-white/90">
+                <CheckCircle2 size={20} className="text-brand-turquoise shrink-0" />
+                <span className="text-sm md:text-base font-medium">{text}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+          >
+            <a 
+              href="#contact" 
+              className="flex items-center justify-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm transition-all hover:bg-gray-100 cursor-pointer shadow-xl"
+            >
+              Get Free Quote
+              <ChevronRight size={18} />
+            </a>
+            
+            <a 
+              href="tel:+971502406139" 
+              className="flex items-center justify-center gap-2 bg-transparent text-white border border-white/30 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm transition-all hover:bg-white/10 cursor-pointer backdrop-blur-sm"
+            >
+              <Phone size={18} />
+              Call +971 50 240 6139
+            </a>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Bottom fade transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-gray-50 to-transparent z-10" />
+      {/* Scroll indicator */}
+      <motion.div 
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30"
+      >
+        <ChevronRight size={32} className="rotate-90" />
+      </motion.div>
     </section>
   );
 }
